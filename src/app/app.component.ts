@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   title = 'toy_shop';
 
   toys: Toy[]=[];
-  bought_toys: string[]=[];
+  bought_toys: Toy[]=[];
      
   constructor(private httpService: HttpService){}
       
@@ -23,8 +23,15 @@ export class AppComponent implements OnInit {
 
   
 
-  public addToCart (_name: any){
-    this.bought_toys.push(_name);
-    console.log(this.bought_toys);
+  public addToCart (_toy: any){
+    this.bought_toys.push(_toy);
+    // console.log(JSON.stringify(this.bought_toys));
+    localStorage.setItem("toys", JSON.stringify(this.bought_toys));
+    // localStorage.setItem <- типа бд
   }
+
+  // public goToCart(){
+  //   // console.log(JSON.stringify(this.bought_toys));
+  //   localStorage.setItem("toys", JSON.stringify(this.bought_toys));
+  // }
 }
